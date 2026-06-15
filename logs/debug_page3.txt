@@ -1,0 +1,96 @@
+RAW:
+[
+    {
+        "question_number": "17",
+        "question_text": "What does a mathematical proof aim to establish?",
+        "question_latex": "What does a mathematical proof aim to establish?",
+        "question_type": "objective",
+        "options": [
+            {
+                "label": "A",
+                "text": "The popularity of a statement",
+                "latex": "The popularity of a statement"
+            },
+            {
+                "label": "B",
+                "text": "The correctness or truth of a statement",
+                "latex": "The correctness or truth of a statement"
+            },
+            {
+                "label": "C",
+                "text": "The complexity of a statement",
+                "latex": "The complexity of a statement"
+            },
+            {
+                "label": "D",
+                "text": "The length of a statement",
+                "latex": "The length of a statement"
+            }
+        ]
+    },
+    {
+        "question_number": "18",
+        "question_text": "Which testing approach starts from a general level down to specific details?",
+        "question_latex": "Which testing approach starts from a general level down to specific details?",
+        "question_type": "objective",
+        "options": [
+            {
+                "label": "A",
+                "text": "Top Down",
+                "latex": "Top Down"
+            },
+            {
+                "label": "B",
+                "text": "Outside In",
+                "latex": "Outside In"
+            },
+            {
+                "label": "C",
+                "text": "Inside Out",
+                "latex": "Inside Out"
+            },
+            {
+                "label": "D",
+                "text": "Bottom Up",
+                "latex": "Bottom Up"
+            }
+        ]
+    },
+    {
+        "question_number": "19",
+        "question_text": "Which type of testing is done by the end user in a controlled environment using real-life data?",
+        "question_latex": "Which type of testing is done by the end user in a controlled environment using real-life data?",
+        "question_type": "objective",
+        "options": [
+            {
+                "label": "A",
+                "text": "Unit Testing",
+                "latex": "Unit Testing"
+            },
+            {
+                "label": "B",
+                "text": "System Testing",
+                "latex": "System Testing"
+            },
+            {
+                "label": "C",
+                "text": "User Acceptance Testing",
+                "latex": "User Acceptance Testing"
+            },
+            {
+                "label": "D",
+                "text": "Integration Testing",
+                "latex": "Integration Testing"
+            }
+        ]
+    },
+    {
+        "question_number": "20",
+        "question_text": "What is the main goal of stress testing in software development?",
+        "question_latex": "What is the main goal of stress testing in software development?",
+        "question_type": "objective",
+        "options": [
+            {
+                "label": "A",
+                "text": "To break the system and determine safe levels",
+                "latex": "To break the system

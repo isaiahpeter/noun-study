@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#080d1a"/>
+<title>NOUN Study — Sign In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg0:#080d1a;--bg1:#0f1623;--bg2:#1a2540;
+  --blue:#3b82f6;--blue-dim:rgba(59,130,246,0.12);
+  --green:#10b981;--red:#ef4444;
+  --text:#f0f4ff;--text2:#94a3b8;--text3:#4b5f7c;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --sans:'Sora',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --r:12px;--r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:15px;}
+body{
+  font-family:var(--body);
+  background:var(--bg0);
+  color:var(--text);
+  min-height:100dvh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+.card{
+  width:100%;max-width:400px;
+  background:var(--bg1);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px 28px;
+}
+
+.logo-row{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:28px;
+}
+.logo-sq{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,#1d4ed8,#7c3aed);
+  border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-size:1.1rem;font-weight:700;color:#fff;
+}
+.logo-name{font-family:var(--sans);font-size:1rem;font-weight:700;}
+.logo-sub{font-size:0.7rem;color:var(--text3);margin-top:1px;}
+
+/* Tabs */
+.tabs{
+  display:flex;gap:2px;
+  background:var(--bg0);
+  border-radius:var(--r-sm);
+  padding:3px;
+  margin-bottom:24px;
+}
+.tab{
+  flex:1;text-align:center;
+  font-family:var(--body);font-size:0.82rem;font-weight:500;
+  padding:7px;border-radius:6px;
+  border:none;background:transparent;
+  color:var(--text3);cursor:pointer;transition:all 0.15s;
+}
+.tab.active{background:var(--bg2);color:var(--text);}
+
+/* Form */
+.field{margin-bottom:16px;}
+.field label{
+  display:block;font-size:0.72rem;font-weight:600;
+  color:var(--text2);margin-bottom:6px;
+  text-transform:uppercase;letter-spacing:0.05em;
+}
+.field input{
+  width:100%;
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  border-radius:var(--r-sm);
+  color:var(--text);
+  font-family:var(--body);font-size:0.875rem;
+  padding:10px 12px;outline:none;
+  transition:border-color 0.15s;
+}
+.field input:focus{border-color:var(--blue);}
+.field input::placeholder{color:var(--text3);}
+
+/* Submit btn */
+.submit{
+  width:100%;margin-top:8px;
+  background:var(--blue);border:none;
+  border-radius:var(--r-sm);
+  color:#fff;font-family:var(--sans);
+  font-size:0.9rem;font-weight:600;
+  padding:12px;cursor:pointer;
+  transition:all 0.15s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.submit:hover{background:#60a5fa;}
+.submit:disabled{opacity:0.4;cursor:not-allowed;}
+
+/* Divider */
+.divider{
+  display:flex;align-items:center;gap:10px;
+  margin:18px 0;color:var(--text3);font-size:0.75rem;
+}
+.divider::before,.divider::after{
+  content:'';flex:1;height:1px;background:var(--border);
+}
+
+/* Google btn */
+.google-btn{
+  width:100%;
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:var(--r-sm);
+  color:var(--text);font-family:var(--body);
+  font-size:0.875rem;font-weight:500;
+  padding:11px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:border-color 0.15s;
+}
+.google-btn:hover{border-color:var(--border2);background:var(--bg2);}
+.google-btn svg{flex-shrink:0;}
+
+/* Message */
+.msg{
+  padding:10px 12px;border-radius:var(--r-sm);
+  font-size:0.8rem;margin-bottom:14px;display:none;
+}
+.msg.err{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;}
+.msg.ok{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#6ee7b7;}
+.msg.show{display:block;}
+
+/* Footer note */
+.note{
+  text-align:center;margin-top:18px;
+  font-size:0.72rem;color:var(--text3);line-height:1.6;
+}
+.note a{color:var(--text2);text-decoration:none;}
+.note a:hover{color:var(--blue);}
+
+/* Spinner */
+@keyframes spin{to{transform:rotate(360deg);}}
+.spinner{
+  width:16px;height:16px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin 0.7s linear infinite;
+  flex-shrink:0;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo-row">
+    <div class="logo-sq">N</div>
+    <div>
+      <div class="logo-name">NOUN Study</div>
+      <div class="logo-sub">Past Questions + AI Assistant</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="tabLogin"    onclick="showTab('login')">Sign in</button>
+    <button class="tab"        id="tabRegister" onclick="showTab('register')">Register</button>
+  </div>
+
+  <div id="msgBox" class="msg"></div>
+
+  <!-- ── Login form ──────────────────────────────────────── -->
+  <form id="loginForm" onsubmit="login(event)">
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email"/>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="loginPass" placeholder="••••••••" required autocomplete="current-password"/>
+    </div>
+    <button class="submit" type="submit" id="loginBtn">
+      Sign in
+    </button>
+  </form>
+
+  <!-- ── Register form ───────────────────────────────────── -->
+  <form id="registerForm" style="display:none" onsubmit="register(event)">
+    <div class="field">
+      <label>Full name</label>
+      <input type="text" id="regName" placeholder="Isaiah Peter" required autocomplete="name"/>
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="regEmail" placeholder="you@example.com" required autocomplete="email"/>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="regPass" placeholder="Min 6 characters" required minlength="6"/>
+    </div>
+    <button class="submit" type="submit" id="regBtn">
+      Create account
+    </button>
+  </form>
+
+  <div class="note">
+    By continuing you agree to our terms.<br/>
+    <a href="/study">← Back to study</a>
+  </div>
+</div>
+
+<script>
+const SUPA_URL  = '__SUPABASE_URL__';   // replaced by Express on serve
+const SUPA_ANON = '__SUPABASE_ANON__';
+const API       = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
+
+function showTab(t) {
+  document.getElementById('loginForm').style.display    = t === 'login'    ? '' : 'none';
+  document.getElementById('registerForm').style.display = t === 'register' ? '' : 'none';
+  document.getElementById('tabLogin').classList.toggle('active',    t === 'login');
+  document.getElementById('tabRegister').classList.toggle('active', t === 'register');
+  hideMsg();
+}
+
+function showMsg(text, type='err') {
+  const b = document.getElementById('msgBox');
+  b.textContent = text;
+  b.className   = `msg ${type} show`;
+}
+function hideMsg() {
+  document.getElementById('msgBox').className = 'msg';
+}
+
+function setLoading(btnId, loading) {
+  const btn = document.getElementById(btnId);
+  btn.disabled = loading;
+  btn.innerHTML = loading
+    ? '<div class="spinner"></div> Please wait…'
+    : (btnId === 'loginBtn' ? 'Sign in' : 'Create account');
+}
+
+// ── Supabase auth via fetch ────────────────────────────────
+async function supabaseAuth(endpoint, body) {
+  const res = await fetch(`${SUPA_URL}/auth/v1/${endpoint}`, {
+    method : 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey'      : SUPA_ANON,
+    },
+    body: JSON.stringify(body),
+  });
+  return res.json();
+}
+
+async function login(e) {
+  e.preventDefault(); hideMsg();
+  setLoading('loginBtn', true);
+
+  const email    = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPass').value;
+
+  try {
+    const data = await supabaseAuth('token?grant_type=password', { email, password });
+
+    if (data.error || !data.access_token) {
+      showMsg(data.error_description || data.msg || 'Invalid email or password');
+      return;
+    }
+
+    localStorage.setItem('noun_token', data.access_token);
+    localStorage.setItem('noun_refresh', data.refresh_token);
+    showMsg('Signed in! Redirecting…', 'ok');
+    setTimeout(() => window.location.href = '/study', 800);
+
+  } catch(err) {
+    showMsg('Network error — please try again');
+  } finally {
+    setLoading('loginBtn', false);
+  }
+}
+
+async function register(e) {
+  e.preventDefault(); hideMsg();
+  setLoading('regBtn', true);
+
+  const name     = document.getElementById('regName').value.trim();
+  const email    = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPass').value;
+
+  try {
+    const data = await supabaseAuth('signup', { email, password, data: { name } });
+
+    if (data.error) {
+      showMsg(data.msg || data.error_description || 'Registration failed');
+      return;
+    }
+
+    if (data.access_token) {
+      // Auto-confirmed
+      localStorage.setItem('noun_token', data.access_token);
+      localStorage.setItem('noun_refresh', data.refresh_token);
+      showMsg('Account created! Redirecting…', 'ok');
+      setTimeout(() => window.location.href = '/study', 800);
+    } else {
+      // Email confirmation required
+      showMsg('Check your email to confirm your account, then sign in.', 'ok');
+      setTimeout(() => showTab('login'), 2000);
+    }
+
+  } catch(err) {
+    showMsg('Network error — please try again');
+  } finally {
+    setLoading('regBtn', false);
+  }
+}
+
+// Auto-redirect if already logged in
+const existing = localStorage.getItem('noun_token');
+if (existing) window.location.href = '/study';
+</script>
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+[
+  {
+    "filename": "CIT308_2022_1.json",
+    "courseCode": "CIT308",
+    "questionCount": 13,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:26:11.050Z"
+  },
+  {
+    "filename": "CIT308_2022_2.json",
+    "courseCode": "CIT308",
+    "questionCount": 15,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:26:17.098Z"
+  },
+  {
+    "filename": "CIT308_2023_1.json",
+    "courseCode": "CIT308",
+    "questionCount": 17,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:26:20.612Z"
+  },
+  {
+    "filename": "CIT308_2023_2.json",
+    "courseCode": "CIT308",
+    "questionCount": 13,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:26:24.342Z"
+  },
+  {
+    "filename": "CIT308_2024_1.json",
+    "courseCode": "CIT308",
+    "questionCount": 15,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:26:28.881Z"
+  },
+  {
+    "filename": "CIT308_2024_2.json",
+    "courseCode": "CIT308",
+    "questionCount": 15,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:26:32.132Z"
+  },
+  {
+    "filename": "CIT308_2025_1.json",
+    "courseCode": "CIT308",
+    "questionCount": 21,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:28:08.284Z"
+  },
+  {
+    "filename": "CIT308_2025_2.json",
+    "courseCode": "CIT308",
+    "questionCount": 23,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:28:12.781Z"
+  },
+  {
+    "filename": "CIT314 2025_2_merged.json",
+    "courseCode": "CIT314",
+    "questionCount": 137,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:29:56.171Z"
+  },
+  {
+    "filename": "CIT314_2025_2.json",
+    "courseCode": "CIT314",
+    "questionCount": 137,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:35:38.838Z"
+  },
+  {
+    "filename": "CIT332_2025_2.json",
+    "courseCode": "CIT332",
+    "questionCount": 109,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:36:18.181Z"
+  },
+  {
+    "filename": "CIT310_2024_1.json",
+    "courseCode": "CIT310",
+    "questionCount": 62,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:36:39.802Z"
+  },
+  {
+    "filename": "CIT316_2024_1.json",
+    "courseCode": "CIT316",
+    "questionCount": 40,
+    "failedCount": 0,
+    "embeddedAt": "2026-06-14T22:37:04.990Z"
+  }
+]

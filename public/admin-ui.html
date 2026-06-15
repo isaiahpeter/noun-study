@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#080d1a"/>
+<title>NOUN Study — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg0:#080d1a;--bg1:#0f1623;--bg2:#1a2540;--bg3:#1e2d4d;
+  --blue:#3b82f6;--blue-dim:rgba(59,130,246,0.12);
+  --green:#10b981;--green-dim:rgba(16,185,129,0.1);
+  --amber:#f59e0b;--amber-dim:rgba(245,158,11,0.1);
+  --red:#ef4444;--red-dim:rgba(239,68,68,0.1);
+  --text:#f0f4ff;--text2:#94a3b8;--text3:#4b5f7c;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --sans:'Sora',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --r:12px;--r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:14px;}
+body{font-family:var(--body);background:var(--bg0);color:var(--text);min-height:100dvh;}
+
+/* ── Layout ─────────────────────────────────────────────── */
+.layout{display:flex;min-height:100dvh;}
+
+/* Sidebar */
+.side{
+  width:220px;flex-shrink:0;
+  background:var(--bg1);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  position:sticky;top:0;height:100dvh;
+  overflow-y:auto;
+}
+
+.side-head{
+  padding:20px 16px 16px;
+  border-bottom:1px solid var(--border);
+}
+.logo-row{display:flex;align-items:center;gap:10px;}
+.logo-sq{
+  width:32px;height:32px;
+  background:linear-gradient(135deg,#1d4ed8,#7c3aed);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-size:0.85rem;font-weight:700;color:#fff;
+}
+.logo-name{font-family:var(--sans);font-size:0.85rem;font-weight:700;}
+.logo-sub{font-size:0.65rem;color:var(--text3);}
+
+.nav{padding:12px 8px;flex:1;}
+.nav-item{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 10px;border-radius:var(--r-sm);
+  font-size:0.82rem;color:var(--text2);
+  cursor:pointer;transition:all 0.12s;
+  border:none;background:transparent;
+  width:100%;text-align:left;
+  font-family:var(--body);
+}
+.nav-item:hover{background:var(--bg2);color:var(--text);}
+.nav-item.active{background:var(--blue-dim);color:var(--blue);}
+.nav-item .ni{font-size:1rem;flex-shrink:0;}
+
+.side-foot{
+  padding:12px;border-top:1px solid var(--border);
+}
+.admin-badge{
+  background:var(--green-dim);border:1px solid rgba(16,185,129,0.3);
+  border-radius:var(--r-sm);padding:8px 10px;
+  font-size:0.72rem;
+}
+.admin-badge .ab-name{color:var(--green);font-weight:600;display:block;margin-bottom:1px;}
+.admin-badge .ab-email{color:var(--text3);font-family:var(--mono);font-size:0.65rem;}
+
+/* Main */
+.main{flex:1;padding:24px;overflow-y:auto;max-width:900px;}
+
+/* Section */
+.section{display:none;}
+.section.active{display:block;}
+
+.section-title{
+  font-family:var(--sans);font-size:1.1rem;font-weight:700;
+  margin-bottom:4px;
+}
+.section-sub{font-size:0.8rem;color:var(--text2);margin-bottom:20px;}
+
+/* Stats row */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px;}
+.stat-card{
+  background:var(--bg1);border:1px solid var(--border);
+  border-radius:var(--r);padding:16px;
+}
+.stat-label{font-size:0.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
+.stat-val{font-family:var(--sans);font-size:1.6rem;font-weight:700;}
+.stat-val.blue{color:var(--blue);}
+.stat-val.green{color:var(--green);}
+.stat-val.amber{color:var(--amber);}
+
+/* Card */
+.card{
+  background:var(--bg1);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px;margin-bottom:16px;
+}
+.card-title{
+  font-family:var(--sans);font-size:0.9rem;font-weight:600;
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+
+/* Upload zone */
+.upload-zone{
+  border:2px dashed var(--border2);
+  border-radius:var(--r);
+  padding:32px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:all 0.2s;
+  position:relative;
+}
+.upload-zone:hover,.upload-zone.drag{
+  border-color:var(--blue);
+  background:var(--blue-dim);
+}
+.upload-zone input[type=file]{
+  position:absolute;inset:0;opacity:0;cursor:pointer;
+}
+.uz-icon{font-size:2rem;margin-bottom:8px;}
+.uz-title{font-size:0.9rem;font-weight:600;margin-bottom:4px;}
+.uz-sub{font-size:0.78rem;color:var(--text2);}
+
+/* Field */
+.field{margin-bottom:14px;}
+.field label{
+  display:block;font-size:0.7rem;font-weight:600;
+  color:var(--text2);margin-bottom:5px;
+  text-transform:uppercase;letter-spacing:0.05em;
+}
+.field input,.field select{
+  width:100%;background:var(--bg2);
+  border:1px solid var(--border2);border-radius:var(--r-sm);
+  color:var(--text);font-family:var(--body);font-size:0.875rem;
+  padding:9px 11px;outline:none;transition:border-color 0.15s;
+}
+.field input:focus,.field select:focus{border-color:var(--blue);}
+.field select option{background:var(--bg2);}
+
+/* Btn */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  border:none;border-radius:var(--r-sm);
+  font-family:var(--body);font-size:0.82rem;font-weight:500;
+  padding:8px 14px;cursor:pointer;transition:all 0.15s;
+}
+.btn-primary{background:var(--blue);color:#fff;}
+.btn-primary:hover{background:#60a5fa;}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed;}
+.btn-danger{background:var(--red-dim);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;}
+.btn-danger:hover{background:rgba(239,68,68,0.2);}
+.btn-ghost{background:var(--bg2);border:1px solid var(--border);color:var(--text2);}
+.btn-ghost:hover{border-color:var(--border2);color:var(--text);}
+
+/* Progress bar */
+.progress-wrap{margin-top:12px;display:none;}
+.progress-wrap.show{display:block;}
+.progress-label{font-size:0.75rem;color:var(--text2);margin-bottom:5px;display:flex;justify-content:space-between;}
+.progress-bar{height:6px;background:var(--bg2);border-radius:999px;overflow:hidden;}
+.progress-fill{
+  height:100%;background:var(--blue);
+  border-radius:999px;transition:width 0.3s;width:0%;
+}
+.progress-fill.done{background:var(--green);}
+.progress-fill.err{background:var(--red);}
+
+/* Job log */
+.log-box{
+  background:var(--bg0);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:12px;
+  font-family:var(--mono);font-size:0.72rem;
+  color:var(--text2);line-height:1.7;
+  max-height:180px;overflow-y:auto;
+  margin-top:10px;display:none;
+}
+.log-box.show{display:block;}
+.log-line.ok{color:var(--green);}
+.log-line.err{color:var(--red);}
+.log-line.info{color:var(--blue);}
+
+/* Table */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+th{
+  text-align:left;padding:8px 10px;
+  font-size:0.68rem;font-weight:600;
+  color:var(--text3);text-transform:uppercase;letter-spacing:0.05em;
+  border-bottom:1px solid var(--border);
+}
+td{padding:10px;border-bottom:1px solid var(--border);color:var(--text2);}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--bg2);}
+.badge{
+  display:inline-block;padding:2px 8px;border-radius:999px;
+  font-size:0.68rem;font-weight:600;font-family:var(--mono);
+}
+.badge.done{background:var(--green-dim);color:var(--green);}
+.badge.ocr{background:var(--blue-dim);color:var(--blue);}
+.badge.embedding{background:var(--amber-dim);color:var(--amber);}
+.badge.failed{background:var(--red-dim);color:#fca5a5;}
+.badge.pending,.badge.downloading{background:var(--bg2);color:var(--text3);}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:var(--r-sm);padding:9px 18px;font-size:0.8rem;
+  opacity:0;transition:all 0.25s;z-index:999;white-space:nowrap;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.ok{border-color:var(--green);color:var(--green);}
+.toast.err{border-color:var(--red);color:var(--red);}
+
+/* Spinner */
+@keyframes spin{to{transform:rotate(360deg);}}
+.spinner{
+  width:14px;height:14px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-top-color:#fff;border-radius:50%;
+  animation:spin 0.7s linear infinite;
+}
+
+/* Mobile sidebar toggle */
+.mob-header{
+  display:none;
+  align-items:center;gap:10px;
+  padding:12px 16px;
+  background:var(--bg1);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:10;
+}
+.mob-menu{
+  width:34px;height:34px;background:var(--bg2);
+  border:1px solid var(--border);border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:0.9rem;color:var(--text);
+  flex-shrink:0;
+}
+
+@media(max-width:700px){
+  .side{
+    position:fixed;top:0;left:0;bottom:0;z-index:50;
+    transform:translateX(-100%);transition:transform 0.28s ease;
+  }
+  .side.open{transform:translateX(0);}
+  .backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:49;}
+  .backdrop.show{display:block;}
+  .mob-header{display:flex;}
+  .layout{flex-direction:column;}
+  .main{padding:16px;}
+}
+</style>
+</head>
+<body>
+
+<div class="backdrop" id="bd" onclick="closeSide()"></div>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="side" id="side">
+    <div class="side-head">
+      <div class="logo-row">
+        <div class="logo-sq">N</div>
+        <div>
+          <div class="logo-name">NOUN Admin</div>
+          <div class="logo-sub">Study Platform</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item active" onclick="show('overview')">
+        <span class="ni">📊</span> Overview
+      </button>
+      <button class="nav-item" onclick="show('upload')">
+        <span class="ni">⬆️</span> Upload PDF
+      </button>
+      <button class="nav-item" onclick="show('courses')">
+        <span class="ni">📚</span> Courses
+      </button>
+      <button class="nav-item" onclick="show('jobs')">
+        <span class="ni">⚙️</span> Ingest Jobs
+      </button>
+      <button class="nav-item" onclick="show('users')">
+        <span class="ni">👥</span> Users
+      </button>
+    </nav>
+
+    <div class="side-foot">
+      <div class="admin-badge">
+        <span class="ab-name">⚡ Admin</span>
+        <span class="ab-email" id="adminEmail">loading…</span>
+      </div>
+      <button class="btn btn-ghost" style="width:100%;margin-top:8px;justify-content:center" onclick="logout()">
+        Sign out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div style="flex:1;display:flex;flex-direction:column;">
+
+    <div class="mob-header">
+      <button class="mob-menu" onclick="toggleSide()">☰</button>
+      <span style="font-family:var(--sans);font-size:0.9rem;font-weight:600">Admin Panel</span>
+    </div>
+
+    <main class="main">
+
+      <!-- ── Overview ──────────────────────────────────── -->
+      <section class="section active" id="sec-overview">
+        <div class="section-title">Overview</div>
+        <div class="section-sub">Platform stats at a glance</div>
+
+        <div class="stats" id="statsRow">
+          <div class="stat-card">
+            <div class="stat-label">Courses</div>
+            <div class="stat-val blue" id="statCourses">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Questions</div>
+            <div class="stat-val green" id="statQuestions">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Users</div>
+            <div class="stat-val amber" id="statUsers">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Ingest Jobs</div>
+            <div class="stat-val" id="statJobs">—</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🚀 Quick ingest</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+            <div class="field" style="flex:1;min-width:140px;margin:0">
+              <label>Course code</label>
+              <input type="text" id="quickCode" placeholder="e.g. CIT301" style="text-transform:uppercase"/>
+            </div>
+            <button class="btn btn-primary" onclick="quickIngest()">
+              ▶ Ingest course
+            </button>
+          </div>
+          <div class="progress-wrap" id="quickProgress">
+            <div class="progress-label">
+              <span id="quickStatus">Starting…</span>
+              <span id="quickPct">0%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="quickFill"></div></div>
+          </div>
+          <div class="log-box" id="quickLog"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📋 Recent jobs</div>
+          <div class="table-wrap">
+            <table id="recentJobsTable">
+              <thead>
+                <tr><th>Course</th><th>Status</th><th>Questions</th><th>Started</th></tr>
+              </thead>
+              <tbody id="recentJobsBody">
+                <tr><td colspan="4" style="color:var(--text3);text-align:center;padding:20px">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Upload ─────────────────────────────────────── -->
+      <section class="section" id="sec-upload">
+        <div class="section-title">Upload PDF</div>
+        <div class="section-sub">Upload a past question PDF and it will be automatically processed through OCR and embedding.</div>
+
+        <div class="card">
+          <div class="card-title">📄 Select file</div>
+
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" accept=".pdf" id="pdfInput" onchange="onFileSelect(event)"/>
+            <div class="uz-icon">📁</div>
+            <div class="uz-title">Drop PDF here or tap to browse</div>
+            <div class="uz-sub">Past question PDFs only · Max 20MB</div>
+          </div>
+
+          <div id="filePreview" style="display:none;margin-top:14px;padding:12px;background:var(--bg2);border-radius:var(--r-sm);">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:1.5rem">📄</span>
+              <div>
+                <div id="fileName" style="font-size:0.85rem;font-weight:500"></div>
+                <div id="fileSize" style="font-size:0.72rem;color:var(--text3)"></div>
+              </div>
+              <button class="btn btn-ghost" onclick="clearFile()" style="margin-left:auto">✕</button>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;">
+            <div class="field" style="margin:0">
+              <label>Course code *</label>
+              <input type="text" id="uploadCode" placeholder="CIT301" style="text-transform:uppercase"/>
+            </div>
+            <div class="field" style="margin:0">
+              <label>Year *</label>
+              <input type="text" id="uploadYear" placeholder="2024"/>
+            </div>
+            <div class="field" style="margin:0">
+              <label>Semester</label>
+              <select id="uploadSem">
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
+            <div class="field" style="margin:0">
+              <label>Course title (optional)</label>
+              <input type="text" id="uploadTitle" placeholder="e.g. Data Structures"/>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="uploadBtn" onclick="uploadPDF()" style="margin-top:16px;width:100%;justify-content:center;">
+            ⬆ Upload & Process
+          </button>
+
+          <div class="progress-wrap" id="uploadProgress">
+            <div class="progress-label">
+              <span id="uploadStatus">Uploading…</span>
+              <span id="uploadPct">0%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="uploadFill"></div></div>
+          </div>
+          <div class="log-box" id="uploadLog"></div>
+        </div>
+      </section>
+
+      <!-- ── Courses ────────────────────────────────────── -->
+      <section class="section" id="sec-courses">
+        <div class="section-title">Courses</div>
+        <div class="section-sub">All courses in the system</div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Code</th><th>Title</th><th>Available</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="coursesBody">
+                <tr><td colspan="4" style="color:var(--text3);text-align:center;padding:20px">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Jobs ──────────────────────────────────────── -->
+      <section class="section" id="sec-jobs">
+        <div class="section-title">Ingest Jobs</div>
+        <div class="section-sub">All pipeline runs</div>
+        <div style="margin-bottom:12px;">
+          <button class="btn btn-ghost" onclick="loadJobs()">↻ Refresh</button>
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Course</th><th>Status</th><th>Files</th><th>Questions</th><th>Started</th><th>Error</th></tr>
+              </thead>
+              <tbody id="jobsBody">
+                <tr><td colspan="6" style="color:var(--text3);text-align:center;padding:20px">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Users ─────────────────────────────────────── -->
+      <section class="section" id="sec-users">
+        <div class="section-title">Users</div>
+        <div class="section-sub">Registered users and their access</div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Email</th><th>Access</th><th>Joined</th></tr>
+              </thead>
+              <tbody id="usersBody">
+                <tr><td colspan="3" style="color:var(--text3);text-align:center;padding:20px">Coming soon</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API        = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
+const TOKEN      = localStorage.getItem('noun_token');
+const ADMIN_KEY  = localStorage.getItem('noun_admin_key') || prompt('Enter admin key:') || '';
+
+if (ADMIN_KEY) localStorage.setItem('noun_admin_key', ADMIN_KEY);
+if (!TOKEN)    window.location.href = '/login';
+
+// ── Helpers ────────────────────────────────────────────────
+const apiFetch = (path, opts={}) => {
+  const h = { ...(opts.headers||{}), 'x-admin-key': ADMIN_KEY };
+  if (TOKEN) h['Authorization'] = `Bearer ${TOKEN}`;
+  return fetch(`${API}${path}`, {...opts, headers:h});
+};
+
+function toast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = `toast show ${type}`;
+  setTimeout(() => t.className = `toast ${type}`, 3000);
+}
+
+function fmtDate(d) {
+  if (!d) return '—';
+  return new Date(d).toLocaleString('en-NG', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+
+function log(boxId, msg, type='') {
+  const b = document.getElementById(boxId);
+  b.classList.add('show');
+  const l = document.createElement('div');
+  l.className = `log-line ${type}`;
+  l.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  b.appendChild(l);
+  b.scrollTop = b.scrollHeight;
+}
+
+function setProgress(prefix, pct, status, state='') {
+  const pw = document.getElementById(`${prefix}Progress`);
+  const fl = document.getElementById(`${prefix}Fill`);
+  const st = document.getElementById(`${prefix}Status`);
+  const pc = document.getElementById(`${prefix}Pct`);
+  pw.classList.add('show');
+  fl.style.width = pct + '%';
+  fl.className   = `progress-fill ${state}`;
+  if (st) st.textContent = status;
+  if (pc) pc.textContent = pct + '%';
+}
+
+// ── Nav ───────────────────────────────────────────────────
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(`sec-${id}`).classList.add('active');
+  event?.currentTarget?.classList.add('active');
+  closeSide();
+
+  if (id === 'overview')  { loadStats(); loadRecentJobs(); }
+  if (id === 'courses')   loadCourses();
+  if (id === 'jobs')      loadJobs();
+}
+
+function toggleSide()  { document.getElementById('side').classList.toggle('open'); document.getElementById('bd').classList.toggle('show'); }
+function closeSide()   { document.getElementById('side').classList.remove('open'); document.getElementById('bd').classList.remove('show'); }
+
+// ── Overview ──────────────────────────────────────────────
+async function loadStats() {
+  try {
+    const [cr, jb] = await Promise.all([
+      apiFetch('/api/courses').then(r=>r.json()),
+      apiFetch('/api/ingest/jobs').then(r=>r.json()),
+    ]);
+    document.getElementById('statCourses').textContent   = cr.courses?.length || 0;
+    document.getElementById('statJobs').textContent      = jb.jobs?.length || 0;
+    document.getElementById('statQuestions').textContent = '—'; // need a count endpoint
+    document.getElementById('statUsers').textContent     = '—';
+  } catch {}
+}
+
+async function loadRecentJobs() {
+  try {
+    const data = await apiFetch('/api/ingest/jobs').then(r=>r.json());
+    const tb   = document.getElementById('recentJobsBody');
+    const jobs = (data.jobs || []).slice(0, 5);
+    if (!jobs.length) { tb.innerHTML = '<tr><td colspan="4" style="color:var(--text3);text-align:center;padding:16px">No jobs yet</td></tr>'; return; }
+    tb.innerHTML = jobs.map(j => `
+      <tr>
+        <td><span style="font-family:var(--mono);color:var(--text)">${j.course_code}</span></td>
+        <td><span class="badge ${j.status}">${j.status}</span></td>
+        <td>${j.total_questions || 0}</td>
+        <td>${fmtDate(j.started_at)}</td>
+      </tr>
+    `).join('');
+  } catch {}
+}
+
+// Quick ingest
+async function quickIngest() {
+  const code = document.getElementById('quickCode').value.trim().toUpperCase();
+  if (!code) { toast('Enter a course code', 'err'); return; }
+
+  document.getElementById('quickLog').innerHTML = '';
+  log('quickLog', `Starting ingest for ${code}…`, 'info');
+  setProgress('quick', 5, 'Starting…');
+
+  try {
+    const res  = await apiFetch(`/api/ingest/${code}`, { method:'POST' });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+
+    const jobId = data.jobId;
+    log('quickLog', `Job created: ${jobId}`, 'info');
+    pollJob(jobId, 'quick');
+
+  } catch(e) {
+    setProgress('quick', 0, 'Failed', 'err');
+    log('quickLog', `Error: ${e.message}`, 'err');
+    toast(e.message, 'err');
+  }
+}
+
+async function pollJob(jobId, prefix) {
+  const poll = async () => {
+    try {
+      const data = await apiFetch(`/api/ingest/status/${jobId}`).then(r=>r.json());
+      const s    = data.status;
+
+      const pctMap = { pending:5, downloading:25, ocr:55, embedding:80, done:100, failed:0 };
+      const pct    = pctMap[s] || 0;
+
+      setProgress(prefix, pct, s, s === 'done' ? 'done' : s === 'failed' ? 'err' : '');
+      log(prefix+'Log', `Status: ${s} · Questions: ${data.total_questions || 0}`);
+
+      if (s === 'done') {
+        log(prefix+'Log', `✅ Done! ${data.total_questions} questions ingested.`, 'ok');
+        toast(`${data.course_code} ingested — ${data.total_questions} questions`, 'ok');
+        loadStats(); loadRecentJobs();
+        return;
+      }
+      if (s === 'failed') {
+        log(prefix+'Log', `❌ Failed: ${data.error}`, 'err');
+        toast('Ingest failed', 'err');
+        return;
+      }
+      setTimeout(poll, 3000);
+    } catch { setTimeout(poll, 5000); }
+  };
+  poll();
+}
+
+// ── Upload ────────────────────────────────────────────────
+let selectedFile = null;
+
+function onFileSelect(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (file.size > 20 * 1024 * 1024) { toast('File too large (max 20MB)', 'err'); return; }
+  selectedFile = file;
+
+  document.getElementById('uploadZone').style.display  = 'none';
+  document.getElementById('filePreview').style.display = '';
+  document.getElementById('fileName').textContent = file.name;
+  document.getElementById('fileSize').textContent = (file.size / 1024).toFixed(0) + ' KB';
+
+  // Auto-fill code from filename
+  const codeM = file.name.match(/([A-Z]{3}\d{3})/i);
+  if (codeM) document.getElementById('uploadCode').value = codeM[1].toUpperCase();
+  const yearM = file.name.match(/20\d{2}/);
+  if (yearM) document.getElementById('uploadYear').value = yearM[0];
+}
+
+function clearFile() {
+  selectedFile = null;
+  document.getElementById('pdfInput').value = '';
+  document.getElementById('uploadZone').style.display  = '';
+  document.getElementById('filePreview').style.display = 'none';
+}
+
+async function uploadPDF() {
+  if (!selectedFile) { toast('Select a PDF first', 'err'); return; }
+  const code  = document.getElementById('uploadCode').value.trim().toUpperCase();
+  const year  = document.getElementById('uploadYear').value.trim();
+  const sem   = document.getElementById('uploadSem').value;
+  const title = document.getElementById('uploadTitle').value.trim();
+
+  if (!code) { toast('Course code is required', 'err'); return; }
+  if (!year) { toast('Year is required', 'err'); return; }
+
+  const btn = document.getElementById('uploadBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Uploading…';
+  document.getElementById('uploadLog').innerHTML = '';
+  log('uploadLog', `Uploading ${selectedFile.name} for ${code}…`, 'info');
+  setProgress('upload', 10, 'Uploading…');
+
+  try {
+    const form = new FormData();
+    form.append('file',       selectedFile);
+    form.append('courseCode', code);
+    form.append('year',       year);
+    form.append('sem',        sem);
+    form.append('title',      title);
+
+    const res  = await fetch(`${API}/api/ingest/upload`, {
+      method : 'POST',
+      headers: { 'x-admin-key': ADMIN_KEY, 'Authorization': `Bearer ${TOKEN}` },
+      body   : form,
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+
+    setProgress('upload', 25, 'Processing…');
+    log('uploadLog', `Upload complete. Job: ${data.jobId}`, 'ok');
+    pollJob(data.jobId, 'upload');
+
+  } catch(e) {
+    setProgress('upload', 0, 'Failed', 'err');
+    log('uploadLog', `❌ ${e.message}`, 'err');
+    toast(e.message, 'err');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '⬆ Upload & Process';
+  }
+}
+
+// ── Courses ───────────────────────────────────────────────
+async function loadCourses() {
+  try {
+    const data = await apiFetch('/api/courses').then(r=>r.json());
+    const tb   = document.getElementById('coursesBody');
+    const cs   = data.courses || [];
+    if (!cs.length) { tb.innerHTML = '<tr><td colspan="4" style="color:var(--text3);text-align:center;padding:20px">No courses yet</td></tr>'; return; }
+    tb.innerHTML = cs.map(c => `
+      <tr>
+        <td><span style="font-family:var(--mono);color:var(--text);font-size:0.8rem">${c.code}</span></td>
+        <td style="color:var(--text2)">${c.title || '—'}</td>
+        <td><span class="badge ${c.is_available ? 'done' : 'pending'}">${c.is_available ? 'Available' : 'Hidden'}</span></td>
+        <td>
+          <button class="btn btn-ghost" style="padding:4px 8px;font-size:0.72rem" onclick="quickIngestCode('${c.code}')">
+            ▶ Ingest
+          </button>
+        </td>
+      </tr>
+    `).join('');
+  } catch(e) {
+    toast(e.message,'err');
+  }
+}
+
+function quickIngestCode(code) {
+  show('overview');
+  document.getElementById('quickCode').value = code;
+  quickIngest();
+}
+
+// ── Jobs ──────────────────────────────────────────────────
+async function loadJobs() {
+  try {
+    const data = await apiFetch('/api/ingest/jobs').then(r=>r.json());
+    const tb   = document.getElementById('jobsBody');
+    const jobs = data.jobs || [];
+    if (!jobs.length) { tb.innerHTML = '<tr><td colspan="6" style="color:var(--text3);text-align:center;padding:20px">No jobs yet</td></tr>'; return; }
+    tb.innerHTML = jobs.map(j => `
+      <tr>
+        <td><span style="font-family:var(--mono);color:var(--text)">${j.course_code}</span></td>
+        <td><span class="badge ${j.status}">${j.status}</span></td>
+        <td>${j.processed_files||0}/${j.total_files||0}</td>
+        <td>${j.total_questions||0}</td>
+        <td>${fmtDate(j.started_at)}</td>
+        <td style="color:var(--red);font-size:0.72rem;max-width:120px;overflow:hidden;text-overflow:ellipsis">${j.error||'—'}</td>
+      </tr>
+    `).join('');
+  } catch(e) { toast(e.message,'err'); }
+}
+
+// ── Auth ──────────────────────────────────────────────────
+async function loadMe() {
+  try {
+    const data = await apiFetch('/api/auth/me').then(r=>r.json());
+    if (!data.isAdmin) { toast('Not an admin','err'); setTimeout(()=>window.location.href='/study',1500); return; }
+    document.getElementById('adminEmail').textContent = data.user?.email || '';
+  } catch {}
+}
+
+function logout() {
+  localStorage.removeItem('noun_token');
+  localStorage.removeItem('noun_refresh');
+  window.location.href = '/login';
+}
+
+// ── Boot ──────────────────────────────────────────────────
+// Drag-drop
+const zone = document.getElementById('uploadZone');
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('drag'));
+zone.addEventListener('drop', e => {
+  e.preventDefault(); zone.classList.remove('drag');
+  const file = e.dataTransfer.files[0];
+  if (file?.type === 'application/pdf') {
+    document.getElementById('pdfInput').files = e.dataTransfer.files;
+    onFileSelect({ target: { files: [file] } });
+  }
+});
+
+loadMe();
+loadStats();
+loadRecentJobs();
+</script>
+</body>
+</html>

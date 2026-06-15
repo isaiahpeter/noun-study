@@ -1,0 +1,726 @@
+[
+  {
+    "question_number": "1",
+    "question_text": "How do formal methods benefit safety-critical systems?",
+    "question_latex": "How do formal methods benefit safety-critical systems?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "By eliminating the need for human oversight",
+        "latex": "By eliminating the need for human oversight"
+      },
+      {
+        "label": "B",
+        "text": "By reducing the number of errors",
+        "latex": "By reducing the number of errors"
+      },
+      {
+        "label": "C",
+        "text": "By increasing system complexity",
+        "latex": "By increasing system complexity"
+      },
+      {
+        "label": "D",
+        "text": "By delaying the development process",
+        "latex": "By delaying the development process"
+      }
+    ],
+    "source_page": 1,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "2",
+    "question_text": "Why is precision important in software specification?",
+    "question_latex": "Why is precision important in software specification?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "To simplify the user interface",
+        "latex": "To simplify the user interface"
+      },
+      {
+        "label": "B",
+        "text": "To increase development speed",
+        "latex": "To increase development speed"
+      },
+      {
+        "label": "C",
+        "text": "To avoid serious errors later",
+        "latex": "To avoid serious errors later"
+      },
+      {
+        "label": "D",
+        "text": "To reduce the cost of software",
+        "latex": "To reduce the cost of software"
+      }
+    ],
+    "source_page": 1,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "3",
+    "question_text": "What is the primary purpose of using UML in software development?",
+    "question_latex": "What is the primary purpose of using UML in software development?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Conducting user training",
+        "latex": "Conducting user training"
+      },
+      {
+        "label": "B",
+        "text": "Performing system maintenance",
+        "latex": "Performing system maintenance"
+      },
+      {
+        "label": "C",
+        "text": "Writing code",
+        "latex": "Writing code"
+      },
+      {
+        "label": "D",
+        "text": "Design and requirements analysis",
+        "latex": "Design and requirements analysis"
+      }
+    ],
+    "source_page": 1,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "4",
+    "question_text": "How does model checking verify system properties?",
+    "question_latex": "How does model checking verify system properties?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Through an exhaustive search of all possible states",
+        "latex": "Through an exhaustive search of all possible states"
+      },
+      {
+        "label": "B",
+        "text": "By comparing code with user manuals",
+        "latex": "By comparing code with user manuals"
+      },
+      {
+        "label": "C",
+        "text": "By executing random test cases",
+        "latex": "By executing random test cases"
+      },
+      {
+        "label": "D",
+        "text": "By using AI algorithms to predict errors",
+        "latex": "By using AI algorithms to predict errors"
+      }
+    ],
+    "source_page": 1,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "5",
+    "question_text": "Which option is a key characteristic of high-quality software?",
+    "question_latex": "Which option is a key characteristic of high-quality software?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Complexity",
+        "latex": "Complexity"
+      },
+      {
+        "label": "B",
+        "text": "Correctness",
+        "latex": "Correctness"
+      },
+      {
+        "label": "C",
+        "text": "High cost",
+        "latex": "High cost"
+      },
+      {
+        "label": "D",
+        "text": "Limited functionality",
+        "latex": "Limited functionality"
+      }
+    ],
+    "source_page": 1,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "6",
+    "question_text": "Which phase follows the implementation phase in software development?",
+    "question_latex": "Which phase follows the implementation phase in software development?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Verification",
+        "latex": "Verification"
+      },
+      {
+        "label": "B",
+        "text": "Requirements analysis",
+        "latex": "Requirements analysis"
+      },
+      {
+        "label": "C",
+        "text": "Design",
+        "latex": "Design"
+      },
+      {
+        "label": "D",
+        "text": "Maintenance",
+        "latex": "Maintenance"
+      }
+    ],
+    "source_page": 1,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "7",
+    "question_text": "How can formal methods improve software maintainability?",
+    "question_latex": "How can formal methods improve software maintainability?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "By reducing initial development costs",
+        "latex": "By reducing initial development costs"
+      },
+      {
+        "label": "B",
+        "text": "By providing a precise and consistent specification",
+        "latex": "By providing a precise and consistent specification"
+      },
+      {
+        "label": "C",
+        "text": "By simplifying the user interface",
+        "latex": "By simplifying the user interface"
+      },
+      {
+        "label": "D",
+        "text": "By limiting software features",
+        "latex": "By limiting software features"
+      }
+    ],
+    "source_page": 1,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "8",
+    "question_text": "What is one advantage of human-directed proof in formal methods?",
+    "question_latex": "What is one advantage of human-directed proof in formal methods?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Eliminates all errors",
+        "latex": "Eliminates all errors"
+      }
+    ],
+    "source_page": 1,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "B",
+    "question_text": "Faster than automated proof",
+    "question_latex": "Faster than automated proof",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Less mathematical sophistication required",
+        "latex": "Less mathematical sophistication required"
+      },
+      {
+        "label": "C",
+        "text": "Improved understanding of the system",
+        "latex": "Improved understanding of the system"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "9",
+    "question_text": "What type of semantics uses preconditions and postconditions?",
+    "question_latex": "What type of semantics uses preconditions and postconditions?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Operational semantics",
+        "latex": "Operational semantics"
+      },
+      {
+        "label": "B",
+        "text": "Denotational semantics",
+        "latex": "Denotational semantics"
+      },
+      {
+        "label": "C",
+        "text": "Functional semantics",
+        "latex": "Functional semantics"
+      },
+      {
+        "label": "D",
+        "text": "Axiomatic semantics",
+        "latex": "Axiomatic semantics"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "10",
+    "question_text": "Which formalism is used for the specification of reactive systems?",
+    "question_latex": "Which formalism is used for the specification of reactive systems?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Statecharts",
+        "latex": "Statecharts"
+      },
+      {
+        "label": "B",
+        "text": "Algebraic specification",
+        "latex": "Algebraic specification"
+      },
+      {
+        "label": "C",
+        "text": "Predicate logic",
+        "latex": "Predicate logic"
+      },
+      {
+        "label": "D",
+        "text": "UML",
+        "latex": "UML"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "11",
+    "question_text": "Which statement is true about system testing?",
+    "question_latex": "Which statement is true about system testing?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "It focuses on individual modules",
+        "latex": "It focuses on individual modules"
+      },
+      {
+        "label": "B",
+        "text": "It is only concerned with user interfaces",
+        "latex": "It is only concerned with user interfaces"
+      },
+      {
+        "label": "C",
+        "text": "It is done by software developers",
+        "latex": "It is done by software developers"
+      },
+      {
+        "label": "D",
+        "text": "It tests a fully integrated software product",
+        "latex": "It tests a fully integrated software product"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "12",
+    "question_text": "What is the focus of validation during software testing?",
+    "question_latex": "What is the focus of validation during software testing?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Increasing software complexity",
+        "latex": "Increasing software complexity"
+      },
+      {
+        "label": "B",
+        "text": "Building the product correctly",
+        "latex": "Building the product correctly"
+      },
+      {
+        "label": "C",
+        "text": "Building the right solution",
+        "latex": "Building the right solution"
+      },
+      {
+        "label": "D",
+        "text": "Reducing software size",
+        "latex": "Reducing software size"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "13",
+    "question_text": "Which proofing method swaps the result into the condition and negates both?",
+    "question_latex": "Which proofing method swaps the result into the condition and negates both?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "Induction Proof",
+        "latex": "Induction Proof"
+      },
+      {
+        "label": "B",
+        "text": "Contra-positive Proof",
+        "latex": "Contra-positive Proof"
+      },
+      {
+        "label": "C",
+        "text": "Direct Proof",
+        "latex": "Direct Proof"
+      },
+      {
+        "label": "D",
+        "text": "Sequential Proof",
+        "latex": "Sequential Proof"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "14",
+    "question_text": "What does a test plan typically contain?",
+    "question_latex": "What does a test plan typically contain?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "A description of hardware specifications",
+        "latex": "A description of hardware specifications"
+      },
+      {
+        "label": "B",
+        "text": "A sequence number for each test item",
+        "latex": "A sequence number for each test item"
+      },
+      {
+        "label": "C",
+        "text": "A list of user requirements",
+        "latex": "A list of user requirements"
+      },
+      {
+        "label": "D",
+        "text": "A summary of software features",
+        "latex": "A summary of software features"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "15",
+    "question_text": "How is the correctness of a software module tested in unit testing?",
+    "question_latex": "How is the correctness of a software module tested in unit testing?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "By integrating with external systems",
+        "latex": "By integrating with external systems"
+      },
+      {
+        "label": "B",
+        "text": "By testing all modules together",
+        "latex": "By testing all modules together"
+      },
+      {
+        "label": "C",
+        "text": "By focusing on an individual module",
+        "latex": "By focusing on an individual module"
+      },
+      {
+        "label": "D",
+        "text": "By testing the user interface",
+        "latex": "By testing the user interface"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "16",
+    "question_text": "A conjecture is best described as:",
+    "question_latex": "A conjecture is best described as:",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A",
+        "text": "A statement taken for granted as true",
+        "latex": "A statement taken for granted as true"
+      },
+      {
+        "label": "B",
+        "text": "A proven statement used to prove other statements",
+        "latex": "A proven statement used to prove other statements"
+      }
+    ],
+    "source_page": 2,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "25",
+    "question_text": "How does a structure chart differ from a DFD?",
+    "question_latex": "How does a structure chart differ from a DFD?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A.",
+        "text": "A structure chart is less detailed than a DFD",
+        "latex": "A structure chart is less detailed than a DFD"
+      },
+      {
+        "label": "B.",
+        "text": "Both are identical in representation",
+        "latex": "Both are identical in representation"
+      },
+      {
+        "label": "C.",
+        "text": "A DFD shows hierarchical structure while a structure chart does not",
+        "latex": "A DFD shows hierarchical structure while a structure chart does not"
+      },
+      {
+        "label": "D.",
+        "text": "A structure chart represents the system in more detail than a DFD",
+        "latex": "A structure chart represents the system in more detail than a DFD"
+      }
+    ],
+    "source_page": 4,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "26",
+    "question_text": "Why is design verification important in software design?",
+    "question_latex": "Why is design verification important in software design?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A.",
+        "text": "To remove all modules",
+        "latex": "To remove all modules"
+      },
+      {
+        "label": "B.",
+        "text": "To ensure accuracy and quality before implementation",
+        "latex": "To ensure accuracy and quality before implementation"
+      },
+      {
+        "label": "C.",
+        "text": "To finalize the user interface",
+        "latex": "To finalize the user interface"
+      },
+      {
+        "label": "D.",
+        "text": "To begin coding without specifications",
+        "latex": "To begin coding without specifications"
+      }
+    ],
+    "source_page": 4,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "27",
+    "question_text": "Explain the concept of modularization in software design.",
+    "question_latex": "Explain the concept of modularization in software design.",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A.",
+        "text": "Combining all modules into a single unit",
+        "latex": "Combining all modules into a single unit"
+      },
+      {
+        "label": "B.",
+        "text": "Dividing a software system into multiple discrete and independent modules",
+        "latex": "Dividing a software system into multiple discrete and independent modules"
+      },
+      {
+        "label": "C.",
+        "text": "Removing unnecessary modules from the system",
+        "latex": "Removing unnecessary modules from the system"
+      },
+      {
+        "label": "D.",
+        "text": "Testing each module separately",
+        "latex": "Testing each module separately"
+      }
+    ],
+    "source_page": 4,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "28",
+    "question_text": "Why is it beneficial to have components with high cohesion?",
+    "question_latex": "Why is it beneficial to have components with high cohesion?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A.",
+        "text": "They increase module dependency",
+        "latex": "They increase module dependency"
+      },
+      {
+        "label": "B.",
+        "text": "They can be reused in different parts of the software",
+        "latex": "They can be reused in different parts of the software"
+      },
+      {
+        "label": "C.",
+        "text": "They complicate the software design process",
+        "latex": "They complicate the software design process"
+      },
+      {
+        "label": "D.",
+        "text": "They are difficult to maintain",
+        "latex": "They are difficult to maintain"
+      }
+    ],
+    "source_page": 4,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "29",
+    "question_text": "Which document is created to assess user requirements before coding?",
+    "question_latex": "Which document is created to assess user requirements before coding?",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A.",
+        "text": "Implementation Plan",
+        "latex": "Implementation Plan"
+      },
+      {
+        "label": "B.",
+        "text": "Software Requirement Specification (SRS)",
+        "latex": "Software Requirement Specification (SRS)"
+      },
+      {
+        "label": "C.",
+        "text": "User Manual",
+        "latex": "User Manual"
+      },
+      {
+        "label": "D.",
+        "text": "Design Verification Document",
+        "latex": "Design Verification Document"
+      }
+    ],
+    "source_page": 4,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  },
+  {
+    "question_number": "30",
+    "question_text": "Describe the process of creating a Level 0 Data Flow Diagram (DFD).",
+    "question_latex": "Describe the process of creating a Level 0 Data Flow Diagram (DFD).",
+    "question_type": "objective",
+    "options": [
+      {
+        "label": "A.",
+        "text": "It includes control and branch elements",
+        "latex": "It includes control and branch elements"
+      },
+      {
+        "label": "B.",
+        "text": "It depicts the entire information system as one diagram without underlying details",
+        "latex": "It depicts the entire information system as one diagram without underlying details"
+      },
+      {
+        "label": "C.",
+        "text": "It focuses on the physical implementation of data flow",
+        "latex": "It focuses on the physical implementation of data flow"
+      },
+      {
+        "label": "D.",
+        "text": "It shows detailed flow of data within modules",
+        "latex": "It shows detailed flow of data within modules"
+      }
+    ],
+    "source_page": 4,
+    "source_file": "CIT308_2025_2.pdf",
+    "course_code": "CIT308",
+    "year": "2025",
+    "sem": "2"
+  }
+]

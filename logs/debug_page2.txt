@@ -1,0 +1,31 @@
+RAW:
+[
+    {
+        "question_number": 3,
+        "question_text": "3: T \u2192 T * F\n4: T -> F\n5: F -$> (E)\n6: F -> a\nFind the left parse of the sentence a * (a + a) (10 marks)\n(c) Write the sequence of the derivation in (b) (1 mark)",
+        "question_latex": "\\[3: T \\rightarrow T * F 4: T \\rightarrow F 5: F \\rightarrow (E) 6: F \\rightarrow a\\]\nFind the left parse of the sentence \\(a * (a + a)\\) (10 marks)\\n(c) Write the sequence of the derivation in (b) (1 mark)",
+        "question_type": "theory",
+        "options": []
+    },
+    {
+        "question_number": 4,
+        "question_text": "4(a) Outline the problematic areas when considering the performance measurement of actual compilers. (5 marks)\n(b) What are the reasons for studying LR Grammars? (5 marks)\n(c) List out the steps in Lex implementation (5 marks)",
+        "question_latex": "4(a) Outline the problematic areas when considering the performance measurement of actual compilers. (5 marks)\\n(b) What are the reasons for studying LR Grammars? (5 marks)\\n(c) List out the steps in Lex implementation (5 marks)",
+        "question_type": "theory",
+        "options": []
+    },
+    {
+        "question_number": 5,
+        "question_text": "5(a) Outline the properties provided by Optimising Compilers. (4 marks)\n(b) Given the following simple source program:\nwhile a < b do\nif c < d then\nx := y + z\nelse\nx := y - z\nGenerate an equivalent intermediate code. (6 marks)\n(c) Write a regular expression for the regular grammar: G = {N, \u03a3, S, P), where N={S,A },\n\u03a3={a,b,c},\nP = {S-aS, S-- A A-, A->cA } and\nS is the start symbol,\nto a regular expression: (5 marks)",
+        "question_latex": "5(a) Outline the properties provided by Optimising Compilers. (4 marks)\\n(b) Given the following simple source program:\nwhile \\(a < b\\) do\nif \\(c < d\\) then\nx := y + z\nelse\nx := y - z\nGenerate an equivalent intermediate code. (6 marks)\\n(c) Write a regular expression for the regular grammar: \\(G = \\{N, \\sigma, S, P\\)\\), where \\\(N=\\{S,A\\}\\),\\n\\\\\\(\\sigma=\\{a,b,c\\},\\nP = \\{S\\rightarrow aS, S\\rightarrow bA, A\\rightarrow\\epsilon, A\\rightarrow cA\\}\\) and\nS is the start symbol,\nto a regular expression: (5 marks)",
+        "question_type": "theory",
+        "options": []
+    },
+    {
+        "question_number": 6,
+        "question_text": "6(a) Outline the four actions adopted when implementing the shift and reduce algorithm (4 marks)\n(b) Define parse tree (3 marks)\n(c) With sample representations, describe the various types of parse trees. (8 marks)",
+        "question_latex": "6(a) Outline the four actions adopted when implementing the shift and reduce algorithm (4 marks)\\n(b) Define parse tree (3 marks)\\n(c) With sample representations, describe the various types of parse trees. (8 marks)",
+        "question_type": "theory",
+        "options": []
+    }
+]
