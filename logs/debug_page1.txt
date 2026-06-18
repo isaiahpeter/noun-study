@@ -1,163 +1,65 @@
 RAW:
 [
   {
-    "question_number": "1",
-    "question_text": "Answer Questions ONE (1) and any other THREE (3)",
-    "question_latex": "Answer Questions ONE (1) and any other THREE (3)",
+    "question_number": "1 (a)",
+    "question_text": "Define (i) a complete metric space (ii) a first category set (iii) a Countable set (iv) a Open ball.",
+    "question_latex": "Define (i) a complete metric space (ii) a first category set (iii) a Countable set (iv) a Open ball.",
     "question_type": "theory",
     "options": []
   },
   {
-    "question_number": "2a",
-    "question_text": "Given the following recursive algorithm: F0 =1, F1 = 1 Fn = Fn \u20131 + F$_{n \u20132}$, for $n\\ge2$",
-    "question_latex": "Given the following recursive algorithm: F\\_0=1, F\\_1=1\n\\(F\\_{n-1}+F\\_{n-2}\\), for \\(n\\ge 2\\)",
+    "question_number": "1 (b)(i)",
+    "question_text": "Let X be a complete metric space and {On} be a countable collection of dense open subsets of X. Prove that that the union On is not empty.",
+    "question_latex": "Let $X$ be a complete metric space and $\{O_n\\}$ be a countable collection of dense open subsets of $X$. Prove that the union $\\bigcup O_n$ is not empty.",
     "question_type": "theory",
     "options": []
   },
   {
-    "question_number": "2b",
-    "question_text": "Find F7 by simulating it manually",
-    "question_latex": "Find F\\_7 by simulating it manually",
+    "question_number": "1 (b)(ii)",
+    "question_text": "Prove that in Rn, every family of disjoint non-empty open set is countable.",
+    "question_latex": "Prove that in $\\Re^n$, every family of disjoint non-empty open set is countable.",
     "question_type": "theory",
     "options": []
   },
   {
-    "question_number": "2c",
-    "question_text": "Define a function F(n) to calculate the nth Fibonacci number (4Marks)",
-    "question_latex": "Define a function F(n) to calculate the nth Fibonacci number (4Marks)",
+    "question_number": "1 (c)(i)",
+    "question_text": "Prove that in Rn, the union of arbitrary collection of open sets is open.",
+    "question_latex": "Prove that in $\\Re^n$, the union of arbitrary collection of open sets is open.",
     "question_type": "theory",
     "options": []
   },
   {
-    "question_number": "2d",
-    "question_text": "Given that the greatest common divisor, gcd is expressed as:",
-    "question_latex": "Given that the greatest common divisor, gcd is expressed as:",
+    "question_number": "1 (c)(ii)",
+    "question_text": "Prove that the finite intersection of a collection of open sets is open.",
+    "question_latex": "Prove that the finite intersection of a collection of open sets is open.",
     "question_type": "theory",
     "options": []
   },
   {
-    "question_number": "3",
-    "question_text": "Compute gcd(48,12)",
-    "question_latex": "Compute \\text{gcd}(48,12)",
+    "question_number": "2(a)",
+    "question_text": "Define the followings: (i) Metric space (ii) Pseudometric (iii) Distance between two vectors",
+    "question_latex": "Define the followings: (i) Metric space (ii) Pseudometric (iii) Distance between two vectors",
     "question_type": "theory",
     "options": []
   },
   {
-    "question_number": "3",
-    "question_text": "List three (3) applications of Tower of Hanoi",
-    "question_latex": "List three (3) applications of Tower of Hanoi",
+    "question_number": "2(b)",
+    "question_text": "Explain the concept of and ordered field.",
+    "question_latex": "Explain the concept of and ordered field.",
     "question_type": "theory",
     "options": []
   },
   {
-    "question_number": "4",
-    "question_text": "With the help of a diagram, explain indirect recursion",
-    "question_latex": "With the help of a diagram, explain indirect recursion",
+    "question_number": "3(a)",
+    "question_text": "Define the followings: (i) a function (ii) Real-valued function (iii) Vector-valued function.",
+    "question_latex": "Define the followings: (i) a function (ii) Real-valued function (iii) Vector-valued function.",
     "question_type": "theory",
     "options": []
   },
   {
-    "question_number": "4",
-    "question_text": "Explain the principle of Selection Sort (5Marks)",
-    "question_latex": "Explain the principle of Selection Sort (5Marks)",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "4",
-    "question_text": "Briefly describe in steps how Dynamic Programming works",
-    "question_latex": "Briefly describe in steps how Dynamic Programming works",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "5",
-    "question_text": "Given the Binary Search Tree below with key [x] = 37. State the value of key[y]",
-    "question_latex": "Given the Binary Search Tree below with key \\(\\left[x\\right]=37\\). State the value of key\\(\\left[y\\right]\\)",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "5",
-    "question_text": "Explain the steps to perform Binary Search for \u201813\u2019 from the array of numbers",
-    "question_latex": "Explain the steps to perform Binary Search for \u201813\u2019 from the array of numbers",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "5",
-    "question_text": "State the importance of writing algorithms",
-    "question_latex": "State the importance of writing algorithms",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "6",
-    "question_text": "Write a recursive function to calculate nth Fibonacci number"
-    "question_latex": "Write a recursive function to calculate nth Fibonacci number",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "6",
-    "question_text": "Write short notes on Randomized Algorithm and mention two types",
-    "question_latex": "Write short notes on Randomized Algorithm and mention two types",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "6",
-    "question_text": "Explain why the Worst-Case analysis is important in analysis of algorithms",
-    "question_latex": "Explain why the Worst-Case analysis is important in analysis of algorithms",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "7",
-    "question_text": "Using the substitution method, show that $ T(n) = T\\left(\\frac{n}{2}\\right) + n $ is asymptotically bounded by T(logn)",
-    "question_latex": "Using the substitution method, show that $ T(n) = T\\left(\\frac{n}{2}\\right) + n $ is asymptotically bounded by T(logn)",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "7",
-    "question_text": "With a suitable diagram, describe the Omega notation",
-    "question_latex": "With a suitable diagram, describe the Omega notation",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "7",
-    "question_text": "Explain two factors used to analyse the efficiency of an algorithm",
-    "question_latex": "Explain two factors used to analyse the efficiency of an algorithm",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "8",
-    "question_text": "Given a function$f(n)= n^2+ 7n +5$",
-    "question_latex": "Given a function$f(n)= n^2+ 7n +5$",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "8",
-    "question_text": "Explain what it means to say that \"$f(n)\\)\" is asymptotically equivalent to $ n^2 $ as $ n \\rightarrow \\infty $\" (6Marks)",
-    "question_latex": "Explain what it means to say that \u201c$f(n)\u2019\u2019 is asymptotically equivalent to\u2019\u2019\u2018\u201cto\u2019\u201d as $ u\\rightarrow \\infty \" (6Marks)",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "8",
-    "question_text": "Briefly differentiate between an algorithm and a pseudo-code",
-    "question_latex": "Briefly differentiate between an algorithm and a pseudo-code",
-    "question_type": "theory",
-    "options": []
-  },
-  {
-    "question_number": "8",
-    "question_text": "Mention and describe the two types of algorithms that are equivalent to each other",
-    "question_latex": "Mention and describe the two types of algorithms that are equivalent to each other",
+    "question_number": "3(b)",
+    "question_text": "Let A and B be metric spaces. Prove that f: A \u2192 B is continuous if and only if f\u22121(V) is an open set in A whenever V is open in B.",
+    "question_latex": "Let $A$ and $B$ be metric spaces. Prove that $f: A \\rightarrow B$ is continuous if and only if $f^{-1}(V)$ is an open set in $A$ whenever $V$ is open in $B$.",
     "question_type": "theory",
     "options": []
   }

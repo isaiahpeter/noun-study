@@ -28,8 +28,8 @@ INSTRUCTIONS:
 - For theory questions: explain the concept, give examples, suggest how to structure an answer
 - For objective questions: explain why each option is right or wrong
 - Keep responses focused and exam-oriented
-- Use LaTeX for any mathematical expressions: $...$ for inline, $$...$$ for display
-- End every response with a "📝 Exam Tip:" relevant to the topic`;
+- End every response with a "📝 Exam Tip:" relevant to the topic
+- Use LaTeX for ALL math expressions without exception: $...$ for inline, $$...$$ for display. Never use \\[ \\] or \\( \\) delimiters`;
 };
 
 // ─── POST /api/study/ask ─────────────────────────────────────────────────────

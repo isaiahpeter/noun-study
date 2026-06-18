@@ -1,0 +1,50 @@
+[
+  {
+    "question_number": "1",
+    "question_text": "(a) Define (i) a complete metric space (ii) a first category set (iii) a Countable set (iv) an Open ball. (b) (i) Let X be a complete metric space and {On} be a countable collection of dense open subsets of X. Prove that that the union ⋃ On is not empty. (ii) Prove that in Rn, every family of disjoint non-empty open set is countable. (c) (i) Prove that in SRn the union of arbitrary collection of open sets is open. (ii) Prove that the finite intersection of a collection of open sets is open.",
+    "question_latex": "(a) Define (i) a complete metric space (ii) a first category set (iii) a Countable set (iv) an Open ball. (b) (i) Let $X$ be a complete metric space and \\(\\{O_n\\}\\) be a countable collection of dense open subsets of $X\\). Prove that the union ⋃ \\(O_n\\) is not empty. (ii) Prove that in \\(\\mathbb{R}^n\\), every family of disjoint non-empty open set is countable. (c) (i) Prove that in \\(\\mathbb{R}^n\\), the union of arbitrary collection of open sets is open. (ii) Prove that the finite intersection of a collection of open sets is open.",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301 2022_1.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  },
+  {
+    "question_number": "2",
+    "question_text": "(a) Define the followings (i) Pseudo metric (ii) Distance between two vectors (b) Explain the concept of an ordered field.",
+    "question_latex": "(a) Define the followings (i) Pseudo metric (ii) Distance between two vectors (b) Explain the concept of an ordered field.",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301 2022_1.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  },
+  {
+    "question_number": "3",
+    "question_text": "(a) Define the followings: (i) a function (ii) real-valued function (iii) vector-valued function. (b) Let A and B be metric spaces. Prove that f: A ⟼ B is continuous if and only if f −1(V) is an open set in A whenever V is open in B.",
+    "question_latex": "(a) Define the followings: (i) a function (ii) real-valued function (iii) vector-valued function. (b) Let $A$ and $B$ be metric spaces. Prove that $f: X\\rightarrow Y$ is continuous if and only if $f^{-1}(V)$ is an open set in $X$ whenever $V$ is open in $Y$.",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301 2022_1.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  },
+  {
+    "question_number": "4",
+    "question_text": "(a) Define the followings (i) neighborhood of a point of a metric space",
+    "question_latex": "(a) Define the followings (i) neighborhood of a point of a metric space",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301 2022_1.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  }
+]

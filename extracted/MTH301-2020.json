@@ -1,0 +1,74 @@
+[
+  {
+    "question_number": "1.",
+    "question_text": "(a) Explain what is meant by a topology τ on a non -empty set X. (3 marks) (b) Give an example of discrete and indiscrete topology. (4 marks) (c) Let X be a complete metric space and {On} be a countable collection of dense open subsets of X . Show that ∪On is not empty. (10 marks) (d) Let be compact. Show that K is bounded. (5 marks)",
+    "question_latex": "\\text{(a) Explain what is meant by a topology}\\tau\\text{on a non -empty set X. (3 marks)\n(b) Give an example of discrete and indiscrete topology. (4 marks) (c) Let} X\\text{be a complete metric space and}\\{O_n\\}\\text{be a countable collection of dense open subsets of}X\\text{. Show that}\\cup O_n\\text{is not empty. (10 marks) (d) Let}K\\subseteq X\\text{be compact. Show that K is bounded. (5 marks)}",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301-2020.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  },
+  {
+    "question_number": "2.",
+    "question_text": "(a) The collection Zd defined as Zd = {A ⊆ X : x ∈ A} implies there exists r > 0 such that B(x, r) ⊆ A} is a topology on X, known as the topology induced by the given metric d. In a metric space (X, d) for each x ∈ X, r > 0, show that B(x, r) is an open subset of (X, Zd). (5 marks) (b) Let be a collection of nonempty closed subsets of a compact space T such that every finite subcollection of K has a nonempty intersection. Show that the intersection of all sets from K is non -empty. (7 marks)",
+    "question_latex": "∪𝑇\n∪ are there such that\n∪∪∪ is not empty.",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301-2020.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  },
+  {
+    "question_number": "3.",
+    "question_text": "(a) State Heine-Borel theorem. (2 marks) (b) Show that a continuous image of a compact space is compact. ⟨ (10 marks)⟩",
+    "question_latex": "\\text{(a) State Heine-Borel theorem. (2 marks) (b) Show that a continuous image of a compact space is compact. ⟨ (10 marks)⟩}",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301-2020.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  },
+  {
+    "question_number": "4.",
+    "question_text": "(a) State axioms of addition of a real number system (R, +, ·) (4 marks) (b) Prove that a subspace T of a topological space S is disconnected iff it is separated by some open subsets U, V of S. (8 marks)",
+    "question_latex": "\\text{(a) State axioms of addition of a real number system}(\\Re, +, \\cdot)\\text{(4 marks) (b) Prove that a subspace}T\\text{of a topological space}S\\text{is disconnected iff it is separated by some open subsets}U\\text{,}V\\text{of}S\\text{. (8 marks)}",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301-2020.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  },
+  {
+    "question_number": "5.",
+    "question_text": "Let (X, d) and (Y, d$_{1}$) be metric spaces and g is a mapping of X into Y. Let τ and τ$_{1}$ be the topologies determined by d and d$_{1}$ respectively. Show that g:(x, r) →(y, r) is continuous if and only ifx→ ⇒g(x→) → g(x): that is ifx→, x→,...x→,...is a sequence of points in (X, d) converging to x, then the sequence of points g(x→), g(x→),...g(x→),... in ( Y, d) converges to g(x). (12 marks)",
+    "question_latex": "𝐺∪⍋⍍,𝑧\\边,𝐷∪⍋⍍tex\n𝐺∪⍋⍍∪⍋⍍,𝑧∪⍋⍍",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301-2020.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  },
+  {
+    "question_number": "6.",
+    "question_text": "Prove that a set C is a closed set if and only if it contains all its limit points (12 marks)",
+    "question_latex": "₩위 Is a set C closed only confidence its limit point?Ｏ0a1f0720ad →",
+    "question_type": "theory",
+    "options": [],
+    "source_page": 1,
+    "source_file": "MTH301-2020.pdf",
+    "course_code": "",
+    "year": "",
+    "sem": ""
+  }
+]
