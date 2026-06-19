@@ -9,8 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" onload="window.katexReady=true"></script>
 
 <style>
 /* ── Design Tokens ───────────────────────────────────────── */
@@ -884,12 +883,35 @@ function appendMessage(role, text) {
   return div;
 }
 
-// ── Normalize math delimiters before rendering ────────────────
-// Converts \[...\] and \(...\) to $$...$$ and $...$
+// ── Math rendering pipeline ───────────────────────────────────
+// Strategy: extract math blocks → render markdown → inject rendered KaTeX HTML
+// This prevents markdown parser from mangling math expressions
+
 function normalizeMath(text) {
   return text
     .replace(/\\\[/g, '$$').replace(/\\\]/g, '$$')
     .replace(/\\\(/g, '$').replace(/\\\)/g, '$');
+}
+
+// Pre-render all math to HTML using KaTeX, return text with math replaced by HTML
+function prerenderMath(text) {
+  if (!window.katex) return text; // KaTeX not loaded yet — fallback
+
+  // Replace display math $$...$$ first (must come before inline)
+  text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, math) => {
+    try {
+      return katex.renderToString(math.trim(), { displayMode: true, throwOnError: false });
+    } catch { return `$$${math}$$`; }
+  });
+
+  // Replace inline math $...$
+  text = text.replace(/\$([^\$\n]+?)\$/g, (_, math) => {
+    try {
+      return katex.renderToString(math.trim(), { displayMode: false, throwOnError: false });
+    } catch { return `$${math}$`; }
+  });
+
+  return text;
 }
 
 function appendAssistantMessage(rawText, context) {
@@ -897,20 +919,28 @@ function appendAssistantMessage(rawText, context) {
   const div  = document.createElement('div');
   div.className = 'message assistant';
 
-  // Normalize math delimiters first
+  // Step 1: Normalize delimiters (\[..\] → $$..$$)
   const normalized = normalizeMath(rawText);
 
-  const tipMatch = normalized.match(/📝 Exam Tip:([\s\S]*?)$/i);
+  // Step 2: Split off exam tip
+  const tipMatch = normalized.match(/📝\s*Exam Tip:([\s\S]*?)$/i);
   const mainText = tipMatch ? normalized.slice(0, tipMatch.index).trim() : normalized;
   const tipText  = tipMatch ? tipMatch[1].trim() : '';
 
-  // markdownToHtml must NOT escape $ signs — math needs to pass through raw
-  let bubbleHtml = markdownToHtml(mainText);
+  // Step 3: Pre-render math to KaTeX HTML BEFORE markdown parsing
+  // This way markdown never sees raw $ signs
+  const mathRendered = prerenderMath(mainText);
 
+  // Step 4: Run markdown parser on math-safe text
+  let bubbleHtml = markdownToHtml(mathRendered);
+
+  // Step 5: Exam tip (render math in tip too, escape after)
   if (tipText) {
-    bubbleHtml += `<div class="exam-tip">📝 <strong>Exam Tip:</strong> ${escHtml(tipText)}</div>`;
+    const tipRendered = prerenderMath(tipText);
+    bubbleHtml += `<div class="exam-tip">📝 <strong>Exam Tip:</strong> ${tipRendered}</div>`;
   }
 
+  // Step 6: Source context
   if (context && context.length) {
     bubbleHtml += renderContext(context);
   }
@@ -922,26 +952,13 @@ function appendAssistantMessage(rawText, context) {
 
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
-
-  // Render KaTeX on this message — use div (not d)
-  if (window.renderMathInElement) {
-    renderMathInElement(div, {
-      delimiters: [
-        { left: '$$', right: '$$', display: true  },
-        { left: '$',  right: '$',  display: false },
-        { left: '\\[', right: '\\]', display: true  },
-        { left: '\\(', right: '\\)', display: false },
-      ],
-      throwOnError: false,
-    });
-  }
 }
 
 function renderContext(context) {
   const items = context.slice(0, 3).map(q => `
     <div class="context-item">
-      <span class="context-meta">${escHtml(q.year)} S${escHtml(q.sem)}</span>
-      <span>${escHtml(q.questionText?.slice(0, 85) || '')}…</span>
+      <span class="context-meta">${escHtmlStrict(q.year || '?')} S${escHtmlStrict(q.sem || '?')}</span>
+      <span>${escHtmlStrict((q.questionText || q.question_text || '').slice(0, 85))}…</span>
     </div>
   `).join('');
 
@@ -970,93 +987,87 @@ function appendTyping() {
   return div;
 }
 
-// ── Line-by-line Markdown Engine ─────────────────────────────
-// IMPORTANT: We do NOT escape $ signs here — KaTeX needs them raw.
-// We only escape HTML-dangerous chars that aren't part of math.
-function escHtmlSafe(str) {
-  // Temporarily protect $...$ and $$...$$ blocks before escaping
-  const mathBlocks = [];
-  let s = String(str);
+// ── Markdown + HTML escape ────────────────────────────────────
+// NOTE: by the time markdownToHtml runs, math is already KaTeX HTML.
+// We must NOT escape < > in the input since it contains real HTML.
+// We only escape plain text portions that aren't HTML tags.
+function escHtml(str) {
+  return String(str)
+    .replace(/&(?![a-z#\d]+;)/gi, '&amp;')  // escape & not already an entity
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 
-  // Pull out display math $$...$$
-  s = s.replace(/\$\$([\s\S]+?)\$\$/g, (m) => {
-    mathBlocks.push(m);
-    return `\x00MATH${mathBlocks.length - 1}\x00`;
-  });
-  // Pull out inline math $...$
-  s = s.replace(/\$([^\$\n]+?)\$/g, (m) => {
-    mathBlocks.push(m);
-    return `\x00MATH${mathBlocks.length - 1}\x00`;
-  });
-
-  // Now safe to escape HTML
-  s = s.replace(/&/g, '&amp;')
-       .replace(/</g, '&lt;')
-       .replace(/>/g, '&gt;')
-       .replace(/"/g, '&quot;');
-
-  // Restore math blocks
-  s = s.replace(/\x00MATH(\d+)\x00/g, (_, i) => mathBlocks[parseInt(i)]);
-
-  return s;
+// Safe escape for plain user-provided strings (context items, tips, etc.)
+function escHtmlStrict(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 function markdownToHtml(text) {
-  let escaped = escHtmlSafe(text);
+  // text already contains pre-rendered KaTeX HTML — do NOT run escHtml on it
+  // Only apply inline markdown transforms that won't break HTML tags
 
-  escaped = escaped.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
-  escaped = escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-  escaped = escaped.replace(/\*(.+?)\*/g, '<em>$1</em>');
-  escaped = escaped.replace(/`([^`]+)`/g, '<code>$1</code>');
+  // Bold and italic (only on non-tag content)
+  text = text.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+  text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  text = text.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+  // Inline code
+  text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-  const lines = escaped.split('\n');
-  let result = [];
+  const lines = text.split('\n');
+  const result = [];
   let inList = false;
 
   lines.forEach(line => {
-    let trimmed = line.trim();
+    const trimmed = line.trim();
 
-    if (trimmed.startsWith('### ') || trimmed.startsWith('## ') || trimmed.startsWith('# ')) {
+    if (/^#{1,3}\s/.test(trimmed)) {
       if (inList) { result.push('</ul>'); inList = false; }
-      const headerText = trimmed.replace(/^#{1,3}\s+/, '');
-      result.push(`<h3>${headerText}</h3>`);
+      result.push(`<h3>${trimmed.replace(/^#{1,3}\s+/, '')}</h3>`);
       return;
     }
 
-    if (trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
+    if (/^[-•]\s/.test(trimmed)) {
       if (!inList) { result.push('<ul>'); inList = true; }
-      result.push(`<li>${trimmed.substring(2)}</li>`);
+      result.push(`<li>${trimmed.slice(2)}</li>`);
       return;
     }
 
-    // Numbered lists
     if (/^\d+\.\s/.test(trimmed)) {
       if (!inList) { result.push('<ul>'); inList = true; }
       result.push(`<li>${trimmed.replace(/^\d+\.\s/, '')}</li>`);
       return;
     }
 
-    if (trimmed === '' || trimmed === '---') {
+    if (trimmed === '---') {
       if (inList) { result.push('</ul>'); inList = false; }
-      if (trimmed === '---') result.push('<hr/>');
+      result.push('<hr/>');
+      return;
+    }
+
+    if (trimmed === '') {
+      if (inList) { result.push('</ul>'); inList = false; }
       return;
     }
 
     if (inList) { result.push('</ul>'); inList = false; }
-    result.push(`<p>${line}</p>`);
+
+    // If line is already a block HTML element (KaTeX display math = <span class="katex-display">)
+    // don't wrap in <p>
+    if (trimmed.startsWith('<') && !trimmed.startsWith('<strong') && !trimmed.startsWith('<em') && !trimmed.startsWith('<code')) {
+      result.push(line);
+    } else {
+      result.push(`<p>${line}</p>`);
+    }
   });
 
   if (inList) result.push('</ul>');
   return result.join('\n');
-}
-
-function escHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
 }
 
 // ── Layout Core Mechanics ────────────────────────────────────
