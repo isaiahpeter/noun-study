@@ -70,7 +70,7 @@ router.post('/ask', async (req, res) => {
         'X-Title'      : 'NOUN Study Assistant',
       },
       body: JSON.stringify({
-        model      : 'nex-agi/nex-n2-pro:free',
+        model      : 'meta-llama/llama-4-maverick:free',
         messages,
         temperature: 0.7,
         max_tokens : 1500,
